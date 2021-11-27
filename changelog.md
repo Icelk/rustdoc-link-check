@@ -1,5 +1,10 @@
 # v1
 
+## v1.0.4
+
+Fixed another critical issue.
+This one was bad programming.
+
 ## v1.0.3
 
 Fixed critical issue in line splitting in Node v12.
