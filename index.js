@@ -9,9 +9,9 @@ function awaitEvent(emitter, ev) {
     })
 }
 function sleep(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms)
+    })
 }
 
 async function main() {
@@ -33,7 +33,7 @@ async function main() {
     child.stderr.on("data", (data) => {
         data = data.toString()
         lines += data
-        let lineIter = data.split("\n")
+        let lineIter = lines.split("\n")
         // remove the last.
         lineIter.pop()
 
@@ -43,11 +43,11 @@ async function main() {
             // Else, add it to the stderr output.
             if (line.startsWith("\x1B[0m\x1B[0m\x1B[1m\x1B[32m")) {
                 // + 1 for \n
-                lines = lineIter.slice(line.length + 1)
                 console.log(line)
             } else {
                 output += line + (index + 1 == lineIter.length ? "" : "\n")
             }
+            lines = lineIter.slice(line.length + 1)
         })
     })
     await awaitEvent(child, "close")
