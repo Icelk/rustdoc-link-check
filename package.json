@@ -1,4 +1,4 @@
-
+{
   "name": "rustdoc-link-check",
   "version": "1.0.1",
   "description": "Discover broken Rust documentation links.",
