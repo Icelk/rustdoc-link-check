@@ -1,5 +1,9 @@
 # v1
 
+## v1.0.3
+
+Fixed critical issue in line splitting in Node v12.
+
 ## v1.0.2
 
 Fixed critical issue in `package.json` caused by `v1.0.1`.
