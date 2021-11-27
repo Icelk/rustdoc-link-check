@@ -10,5 +10,5 @@ inputs:
         required: false,
         default: "./"
 runs:
-    using: "node17"
+    using: "node12"
     main: "index.js"
