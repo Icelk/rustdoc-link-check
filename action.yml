@@ -1,0 +1,10 @@
+name: Rustdoc link check
+description: "Discover broken Rust documentation links."
+inputs:
+    private:
+        description: "Check links in documentation of private items too"
+        required: false
+        default: true
+runs:
+    using: "node17"
+    main: "index.js"

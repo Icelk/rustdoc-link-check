@@ -1,0 +1,19 @@
+{
+  "name": "rustdoc-link-check",
+  "version": "0.1.0",
+  "description": "Discover broken Rust documentation links.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Icelk/rustdoc-link-check.git"
+  },
+  "author": "Icelk <main@icelk.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Icelk/rustdoc-link-check/issues"
+  },
+  "homepage": "https://github.com/Icelk/rustdoc-link-check#readme"
+}
