@@ -5,6 +5,10 @@ inputs:
         description: "Check links in documentation of private items too"
         required: false
         default: true
+    working-directory:
+        description: "The working directory to check for broken links"
+        required: false,
+        default: "./"
 runs:
     using: "node17"
     main: "index.js"

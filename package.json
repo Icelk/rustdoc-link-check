@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Icelk/rustdoc-link-check/issues"
   },
-  "homepage": "https://github.com/Icelk/rustdoc-link-check#readme"
+  "homepage": "https://github.com/Icelk/rustdoc-link-check#readme",
+  "dependencies": {
+    "@actions/core": "^1.6.0"
+  }
 }
