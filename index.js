@@ -1,7 +1,5 @@
 const core = require("@actions/core")
-const util = require("util")
 const childProcess = require("child_process")
-const execFile = util.promisify(childProcess.execFile)
 
 function awaitEvent(emitter, ev) {
     return new Promise((resolve, _) => {
