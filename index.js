@@ -14,7 +14,7 @@ function sleep(ms) {
 
 async function main() {
     let checkPrivate = core.getInput("private")
-    checkPrivate = "true"
+    // checkPrivate = "true"
     if (checkPrivate != "true" && checkPrivate != "false") {
         core.setFailed("private must either be true or false")
         process.exit(1)
@@ -24,7 +24,9 @@ async function main() {
     if (checkPrivate) {
         args.push("--document-private-items")
     }
-    let child = childProcess.spawn("cargo", args, { cwd: core.getInput("working-directory") })
+    const child = childProcess.spawn("cargo", args, { cwd: core.getInput("working-directory") })
+
+    let warningsEmitted = false
 
     let output = ""
     let lines = ""
@@ -39,12 +41,12 @@ async function main() {
             // Escape code for the green-ish colour
             // If the line is ok, print it now.
             // Else, add it to the stderr output.
-            if (line.startsWith("\x1B[0m\x1B[0m\x1B[1m\x1B[32m")) {
-                // + 1 for \n
-                console.log(line)
-            } else {
+            if (!line.startsWith("\x1B[0m\x1B[0m\x1B[1m\x1B[32m")) {
+                warningsEmitted = true
                 output += line + (index + 1 == lineIter.length ? "" : "\n")
             }
+            // + 1 for \n
+            console.log(line)
             lines = lineIter.slice(line.length + 1)
         })
     })
@@ -52,13 +54,8 @@ async function main() {
 
     await sleep(50)
 
-    let stderr = output
-
-    if (stderr.trim().length != 0) {
-        // Add a line of padding.
-        console.log()
-        console.error(stderr)
-        if (stderr.indexOf("could not find `Cargo.toml`") >= 0) {
+    if (output.trim().length != 0 && warningsEmitted) {
+        if (output.indexOf("could not find `Cargo.toml`") >= 0) {
             core.setFailed("This isn't a Cargo project.")
         } else {
             core.setFailed("Broken links were found.")
