@@ -1,5 +1,9 @@
 # v1
 
+## v1.0.8
+
+Removed usage of `??`, a feature not supported by the OLD version of Node used by actions.
+
 ## v1.0.7
 
 Fixed critical issue.

@@ -59,7 +59,8 @@ async function main() {
                 output += line + (index + 1 == lineIter.length ? "" : "\n")
             }
             console.log(line)
-            lines = lines.substring(lineIter[index].length + 1) ?? ""
+            const newLines = lines.substring(lineIter[index].length + 1)
+            lines = newLines === undefined ? "" : newLines
         })
     })
     await awaitEvent(child, "close")
