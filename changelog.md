@@ -1,5 +1,9 @@
 # v1
 
+## v1.0.7
+
+Fixed critical issue.
+
 ## v1.0.6
 
 Fixed issue with warnings being outputted multiple times.

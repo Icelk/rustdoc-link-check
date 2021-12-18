@@ -59,7 +59,7 @@ async function main() {
                 output += line + (index + 1 == lineIter.length ? "" : "\n")
             }
             console.log(line)
-            lines = lines.substring(lineIter[index].length)
+            lines = lines.substring(lineIter[index].length + 1) ?? ""
         })
     })
     await awaitEvent(child, "close")
