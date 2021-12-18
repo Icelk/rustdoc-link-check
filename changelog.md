@@ -1,5 +1,9 @@
 # v1
 
+## v1.0.6
+
+Fixed issue with warnings being outputted multiple times.
+
 ## v1.0.5
 
 Fixed issue with always documenting private items.

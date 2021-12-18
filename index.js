@@ -1,4 +1,5 @@
 const core = require("@actions/core")
+// const fs = require("fs/promises")
 const childProcess = require("child_process")
 
 function awaitEvent(emitter, ev) {
@@ -13,6 +14,17 @@ function sleep(ms) {
 }
 
 async function main() {
+    // Version debug:
+    //
+    // Catch: if no file was found, give empty JSON.
+    // fs.readFile("package.json")
+    // .catch(() => "{}")
+    // .then((pkg) => {
+    // const json = JSON.parse(pkg.toString())
+    // const version = json["version"] ?? "dev"
+    // console.log(`Running version ${version}`)
+    // })
+
     let checkPrivate = core.getInput("private")
     // checkPrivate = "true"
     if (checkPrivate != "true" && checkPrivate != "false") {
@@ -24,6 +36,7 @@ async function main() {
     if (checkPrivate) {
         args.push("--document-private-items")
     }
+
     const child = childProcess.spawn("cargo", args, { cwd: core.getInput("working-directory") })
 
     let warningsEmitted = false
@@ -45,9 +58,8 @@ async function main() {
                 warningsEmitted = true
                 output += line + (index + 1 == lineIter.length ? "" : "\n")
             }
-            // + 1 for \n
             console.log(line)
-            lines = lineIter.slice(line.length + 1)
+            lines = lines.substring(lineIter[index].length)
         })
     })
     await awaitEvent(child, "close")
