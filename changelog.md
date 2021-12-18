@@ -1,5 +1,11 @@
 # v1
 
+## v1.0.5
+
+Fixed issue with always documenting private items.
+
+Also cleaned up & removed unneeded modules.
+
 ## v1.0.4
 
 Fixed another critical issue.
