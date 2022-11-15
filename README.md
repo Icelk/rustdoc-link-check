@@ -15,7 +15,7 @@ Checks the codebase for broken links in the documentation.
 ## Example usage
 
 ```yaml
-uses: Icelk/rustdoc-link-check@v1
+uses: Icelk/rustdoc-link-check@v2
 with:
     private: true
 ```

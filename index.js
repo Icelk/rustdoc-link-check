@@ -79,5 +79,5 @@ async function main() {
 try {
     main()
 } catch (error) {
-    core.setFailed("Unexpected failiure. Please report. " + JSON.stringify(error))
+    core.setFailed("Unexpected failure. Please report. " + JSON.stringify(error))
 }

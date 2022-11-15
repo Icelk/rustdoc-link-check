@@ -1,3 +1,11 @@
+# v2
+
+## v2.0.0
+
+-   Update to Node 16
+-   Bump `@actions/core`
+-   Fix typo
+
 # v1
 
 ## v1.0.8
