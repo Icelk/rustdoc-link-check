@@ -57,7 +57,7 @@ async function main() {
             // Else, add it to the stderr output.
             let green = "\x1B[0m\x1B[0m\x1B[1m\x1B[32m"
             let blue = "\x1B[0m\x1B[0m\x1B[1m\x1B[36m"
-            if (!line.startsWith(green) && !line.startsWith(blue)) {
+            if (!line.startsWith(green) && !line.startsWith(blue) && line.includes("warning")) {
                 warningsEmitted = true
                 output += line + (index + 1 == lineIter.length ? "" : "\n")
             }
