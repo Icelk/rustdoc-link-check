@@ -36,8 +36,9 @@ async function main() {
     if (checkPrivate) {
         args.push("--document-private-items")
     }
-
-    const child = childProcess.spawn("cargo", args, { cwd: core.getInput("working-directory") })
+    const child = childProcess.spawn("cargo", args, {
+        cwd: core.getInput("working-directory"),
+    })
 
     let warningsEmitted = false
 
@@ -54,7 +55,9 @@ async function main() {
             // Escape code for the green-ish colour
             // If the line is ok, print it now.
             // Else, add it to the stderr output.
-            if (!line.startsWith("\x1B[0m\x1B[0m\x1B[1m\x1B[32m")) {
+            let green = "\x1B[0m\x1B[0m\x1B[1m\x1B[32m"
+            let blue = "\x1B[0m\x1B[0m\x1B[1m\x1B[36m"
+            if (!line.startsWith(green) && !line.startsWith(blue)) {
                 warningsEmitted = true
                 output += line + (index + 1 == lineIter.length ? "" : "\n")
             }
@@ -79,5 +82,7 @@ async function main() {
 try {
     main()
 } catch (error) {
-    core.setFailed("Unexpected failure. Please report. " + JSON.stringify(error))
+    core.setFailed(
+        "Unexpected failure. Please report. " + JSON.stringify(error),
+    )
 }
